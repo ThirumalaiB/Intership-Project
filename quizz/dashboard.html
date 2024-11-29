@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Dashboard</h1>
+        <h2>Participant Statistics</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Participant</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="scoreTable">
+                <!-- Scores will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <button class="btn" onclick="goHome()">Back to Home</button>
+    </div>
+
+    <script>
+        // Load scores from localStorage
+        const scores = JSON.parse(localStorage.getItem('quizScores')) || [];
+        const scoreTable = document.getElementById('scoreTable');
+
+        // Render scores
+        scores.forEach((score, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>Participant ${index + 1}</td>
+                <td>${score}</td>
+            `;
+            scoreTable.appendChild(row);
+        });
+
+        // Redirect to home
+        function goHome() {
+            window.location.href = "quic home.html";
+        }
+    </script>
+</body>
+</html>
